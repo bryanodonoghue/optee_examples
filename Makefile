@@ -36,3 +36,9 @@ prepare-for-rootfs-clean:
 	@rm -rf $(OUTPUT_DIR)/ta
 	@rm -rf $(OUTPUT_DIR)/ca
 	@rmdir --ignore-fail-on-non-empty $(OUTPUT_DIR) || test ! -e $(OUTPUT_DIR)
+
+install:
+	$(q)mkdir -p ${DESTDIR}/lib/optee_armtz
+	$(q)cp -a $(OUTPUT_DIR)/ta/* ${DESTDIR}/lib/optee_armtz
+	$(q)mkdir -p ${DESTDIR}/bin
+	$(q)cp -a $(OUTPUT_DIR)/ca/* ${DESTDIR}/bin
